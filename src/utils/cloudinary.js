@@ -21,7 +21,7 @@ const uploadOnCLodinary = async (localFilePath) =>{
                 resource_type:"auto"
             }
         )
-        console.lof("File uploaded on cloudinary",response.url)
+        console.log("File uploaded on cloudinary",response.url)
         return response;
     } catch (error) {
         fs.unlinkSync(localFilePath)// remove localy saved file if the upload operation fails
