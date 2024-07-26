@@ -1,9 +1,6 @@
-import {v2 as clodinary} from "cloudinary"
-import fs from "fs"
-
 import { v2 as cloudinary } from 'cloudinary';
-import { response } from "express";
 
+import fs from "fs"
 
 
 // Configuration
@@ -21,8 +18,10 @@ const uploadOnCLodinary = async (localFilePath) =>{
                 resource_type:"auto"
             }
         )
-        console.log("File uploaded on cloudinary",response.url)
+        console.log("File uploaded")
+        fs.unlinkSync(localFilePath)
         return response;
+     
     } catch (error) {
         fs.unlinkSync(localFilePath)// remove localy saved file if the upload operation fails
         return null
