@@ -18,11 +18,13 @@
             background: white;
             padding: 20px;
             border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 300px;
+            box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
+            width: 300px; 
+            background-color: #9CA986;
         }
         .form-group {
             margin-bottom: 15px;
+            
         }
         .form-group label {
             display: block;
@@ -51,12 +53,50 @@
             color: red;
             margin-bottom: 10px;
         }
+        #fullname,#email,#password,#username{
+            border-radius:20px;
+            background-color: #C9DABF;
+            outline: none;
+            border:none;
+         
+        }
+        #avatar{
+            /* visibility:hidden; */
+            /* border:none; */
+            /* background-color: #007BFF; */
+            display: none;
+            
+            
+        }
+        #customised_avatar {
+            display: inline-block; 
+            border: 2px solid beige;
+            box-sizing: border-box; 
+            width: 100px; 
+            height: 100px; 
+            border-radius:50% ;
+            margin-left: 32%;
+        }
+        #customised_avatar img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
     </style>
 </head>
 <body>
 
 <div class="form-container">
     <form id="registerForm" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="avatar">Avatar:</label>
+            <input type="file" id="avatar" name="avatar" required>
+            <div id="customised_avatar">
+                <img src="" id="display">
+            </div>
+        </div>
         <div class="form-group">
             <label for="fullname">Full Name:</label>
             <input type="text" id="fullname" name="fullname" required>
@@ -73,10 +113,7 @@
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required>
         </div>
-        <div class="form-group">
-            <label for="avatar">Avatar:</label>
-            <input type="file" id="avatar" name="avatar" required>
-        </div>
+        
         <div class="form-group">
             <label for="coverImage">Cover Image:</label>
             <input type="file" id="coverImage" name="coverImage">
@@ -89,6 +126,19 @@
 </div>
 
 <script>
+    document.getElementById('customised_avatar').addEventListener('click', function() {
+    document.getElementById('avatar').click();
+});
+document.getElementById('avatar').addEventListener('change', function() {
+    var file = this.files[0];
+    if (file) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            document.getElementById('display').src = e.target.result;
+        }
+        reader.readAsDataURL(file);
+    }
+});
     document.getElementById('registerForm').addEventListener('submit', async function(event) {
         event.preventDefault();
         const formData = new FormData(this);
