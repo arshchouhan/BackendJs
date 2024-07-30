@@ -156,7 +156,6 @@ document.getElementById('avatar').addEventListener('change', function() {
                 throw new Error(data.message || 'Something went wrong');
             }
 
-            alert('User registered successfully');
             window.location.href="frontend/loggedin.html";
         } catch (error) {
             document.getElementById('error').textContent = error.message;
