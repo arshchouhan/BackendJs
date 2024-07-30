@@ -4,6 +4,21 @@ import { User } from "../models/user.models.js";
 import { uploadOnCLodinary } from "../utils/cloudinary.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 
+const generateAccessAndRefereshToken = async(userId) =>
+{
+   try{
+      const user = await User.findById(userId)
+      const accessToken = user.generateAccessToken()
+      const refereshToken = user.generateRefreshToken ()
+      user.refereshToken = refereshToken
+      await user.save({validateBeforeSave:false})
+      return { accessToken, refereshToken}
+   }catch(error)
+   {
+      throw new ApiError(500,"Something went wrong while generating acccess and refresh token")
+   }
+}
+
 const registerUser = asyncHandler(async(req,res)=>{
     //taking user details from the frontend
     //validating for empty field
@@ -70,6 +85,69 @@ const registerUser = asyncHandler(async(req,res)=>{
    )
 })
 
+const loginUser= asyncHandler(async(req,res)=>{
+   const {email,username,password}= req.body
+   if(!username || ! email)
+   {
+      throw new ApiError(400,"Email or Username required")
+   }
+   const user = await User.findOne({
+      $or:[{username},{email}]
+   })
+   if(!user)
+   {
+      throw new ApiError(400,"user not found")
+   }
+   const isPsswordValid = await user.isPasswordCorrect (password)
+   if(!isPsswordValid)
+      {
+         throw new ApiError(400,"invalid user credentials")
+      }
+      const {accessToken ,  refereshToken} = await user.generateAccessAndRefereshToken(user._id)
+
+      const options= {
+         httpOnly:true, 
+         secure : true
+      }
+
+      return res.status(200)
+      .cookie("accessToken", accessToken, options)
+      .cookie("refereshToken", refereshToken, options)
+      .json(
+         new ApiResponse(200,
+            {
+               user:accessToken,refereshToken
+            },
+            "User loggedin succesfully"
+         )
+      )
+})
+
+const logoutUser = asyncHandler(async(req,res)=>
+{
+   await User.findByIdAndUpdate(req.user._id,
+      {
+         $set:{
+            refereshToken:undefined
+         }
+      },
+      {
+         new:true
+      }
+   )
+   const options = {
+      httpOnly:true,
+      secure:true
+   }
+
+   return res.status(200)
+   .clearCookie("accessToken")
+   .clearCookie("refereshToken")
+   .json(
+      new ApiResponse(200,{},"User Logged Out")
+   )
+})
 
 
-export {registerUser}
+
+export {registerUser,loginUser,logoutUser}

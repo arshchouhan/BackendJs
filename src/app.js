@@ -1,8 +1,15 @@
 import express from "express"
+import session from 'express-session';
 import cors from "cors"
 import cookieParser from "cookie-parser"
 import path from "path"
 const app = new express()
+app.use(session({
+    secret: 'your-secret-key',
+    resave: false, // Only save session if modified
+    saveUninitialized: true, // Save uninitialized sessions
+    cookie: { secure: false } // Use HTTPS in production
+}));
 
 app.use(cors({
     origin:process.env.CORS_ORIGIN,
