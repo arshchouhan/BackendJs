@@ -14,6 +14,7 @@ app.use(express.json({limit:"16kb"}))//for cinfiguring data collected from form
 app.use(express.static("Public"))//to serve static files
 app.use(cookieParser())// for managing cookies
 app.use(express.static(path.join(path.resolve(), 'index.html')));
+app.use(express.static(path.join(path.resolve(), 'loggedin.html')));
 
 //routes import
 
