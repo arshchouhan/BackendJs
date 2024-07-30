@@ -50,6 +50,10 @@
             background: #0056b3;
         }
         .error-message {
+            border-radius:20px;
+            background-color: #C9DABF;
+            outline: none;
+            border:none;
             color: red;
             margin-bottom: 10px;
         }
@@ -153,7 +157,7 @@ document.getElementById('avatar').addEventListener('change', function() {
             console.log(data);
 
             if (!response.ok) {
-                throw new Error(data.message || 'Something went wrong');
+                document.getElementById('error').textContent = data.message || 'Something went wrong';
             }
 
             window.location.href="frontend/loggedin.html";
