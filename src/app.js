@@ -25,7 +25,7 @@ app.use("/api/v1/users",userRouter)
 app.get("/", (req, res) => {
     res.sendFile(path.join(path.resolve(), 'frontend', 'index.html'));
 });
-app.get("/frontend", (req, res) => {
+app.get("/frontend/loggedin.html", (req, res) => {
     res.sendFile(path.join(path.resolve(), 'frontend', 'loggedin.html'));
 });
 
