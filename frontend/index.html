@@ -157,15 +157,18 @@ document.getElementById('avatar').addEventListener('change', function() {
     }
 });
     document.getElementById('registerForm').addEventListener('submit', async function(event) {
-        document.getElementById('spinner').style.display = 'block';
+       
         event.preventDefault();
+        document.getElementById('spinner').style.display = 'block';
+
         const formData = new FormData(this);
 
         try {
             const response = await fetch('http://localhost:3000/api/v1/users/register', {
                 method: 'POST',
-                body: formData,
-            });
+                body: formData,                   
+
+            }); 
 
             const data = await response.json();
             console.log(data);
