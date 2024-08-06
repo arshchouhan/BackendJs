@@ -4,133 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register User</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        .form-container {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
-            width: 300px; 
-            background-color: #9CA986;
-        }
-        .form-group {
-            margin-bottom: 15px;
-            
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-        }
-        .form-group input {
-            width: 100%;
-            padding: 8px;
-            box-sizing: border-box;
-        }
-        .form-group input[type="file"] {
-            padding: 3px;
-        }
-        .form-group button {
-            background: #007BFF;
-            color: white;
-            border: none;
-            padding: 10px;
-            width: 100%;
-            cursor: pointer;
-        }
-        .form-group button:hover {
-            background: #0056b3;
-        }
-        .error-message {
-            border:2px solid beige;
-            width:100%;
-            height:30px;
-            background-color: #C9DABF;
-            outline: none;
-            border-radius:20px;
-            color: beige;
-            margin-bottom: 10px;
-        }
-        #fullname,#email,#password,#username{
-            border-radius:20px;
-            background-color: #C9DABF;
-            outline: none;
-            border:none;
-         
-        }
-        #avatar{
-            /* visibility:hidden; */
-            /* border:none; */
-            /* background-color: #007BFF; */
-            display: none;
-            
-            
-        }
-        #customised_avatar {
-            display: inline-block; 
-            border: 2px solid beige;
-            box-sizing: border-box; 
-            width: 100px; 
-            height: 100px; 
-            border-radius:50% ;
-            margin-left: 32%;
-        }
-        #customised_avatar img{
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 50%;
-        }
-        .spinner {
-      display: none;
-      margin: 50px auto;
-      width: 50px;
-      height: 50px;
-      border: 5px solid rgba(0, 0, 0, 0.1);
-      border-left-color: #000;
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-    }
-
-    </style>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">  
 </head>
 <body>
-
 <div class="form-container">
+    <div class="icon-container">
+        <label for="fileInput">
+            <img src="user.jpg" alt="User Icon" class="user-icon">
+        </label>
+        <input type="file" id="fileInput" name="userImage" accept="image/*">
+    </div>
+    <div class="sign-up">Sign Up</div>
     <form id="registerForm" enctype="multipart/form-data">
         <div class="form-group">
-            <label for="avatar">Avatar:</label>
-            <input type="file" id="avatar" name="avatar" required>
-            <div id="customised_avatar">
-                <img src="" id="display">
-            </div>
-        </div>
-        <div class="form-group">
+            <i class="fa-solid fa-user"></i>
             <label for="fullname">Full Name:</label>
             <input type="text" id="fullname" name="fullname" required>
         </div>
         <div class="form-group">
+            <i class="fa-solid fa-envelope"></i>
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" required>
         </div>
         <div class="form-group">
+            <i class="fa-solid fa-lock"></i>
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required>
         </div>
         <div class="form-group">
+            <i class="fa-regular fa-id-badge"></i>
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required>
         </div>
-        
         <div class="form-group">
+            
+            <i class="fa-solid fa-face-grimace"></i>
+            <label for="avatar">Avatar:</label>
+            <input type="file" id="avatar" name="avatar" required>
+        </div>
+        <div class="form-group">
+            <i class="fa-regular fa-circle-user"></i>
             <label for="coverImage">Cover Image:</label>
             <input type="file" id="coverImage" name="coverImage">
         </div>
@@ -140,7 +54,6 @@
         <div id="error" class="error-message"></div>
     </form>
 </div>
-<div class="spinner" id="spinner"></div>
 
 <script>
     document.getElementById('customised_avatar').addEventListener('click', function() {

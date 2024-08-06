@@ -1,0 +1,113 @@
+body {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    background-color: #01070f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-image: linear-gradient(rgba(240, 245, 222, 0.5),rgba(0,0,50,0.5)), url('photo1.jpg');
+}
+.form-container {
+    background: #6f618d;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 350px;
+    animation: fadeIn 1s ease-in-out;
+    box-shadow:3px 3px 5px black;
+    border: 0.5px solid black;
+    
+    
+}
+.sign-up{
+    text-align: center;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: bolder;
+    font-size: 40px;
+    color: rgb(209, 78, 3);
+    text-shadow: 2px 2px black;
+    margin-top: -18px;
+    
+}
+.icon-container {
+    
+    display: inline-block;
+    cursor:pointer;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-icon {
+    width: 70px; /* Adjust size as needed */
+    height: 70px;
+    border-radius: 50%; /* Make it circular */
+    border: 2px solid rgb(209, 78, 3); /* Optional: add a border */
+    align-self: center;
+    margin-left: 140px;
+}
+
+input[type="file"] {
+    display: none;
+}
+i{
+    margin-left:7px;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.form-group {
+    margin-bottom: 20px;
+    display: inline;
+    width:50px;
+}
+.form-group label {
+    display: inline;
+    margin-bottom: 8px;
+    color: #000000;
+    font-weight: bold;
+    bottom: 180px;
+    top: 180px;
+    font-size: medium;
+}
+.form-group input {
+    width:100%;
+    padding: 10px;
+    box-sizing:border-box;
+    border: 1px solid black;
+    border-radius: 15px;
+    transition: border-color 0.3s;
+    margin: 5px;
+    justify-content: left;
+    background-color: rgb(214, 186, 224);
+    
+}
+.form-group input:focus {
+    border-color:rgb(209, 78, 3);
+    outline: none;
+    background-color: #f0c9c9;
+}
+.form-group input[type="file"] {
+    padding: 5px;
+}
+.form-group button {
+    background: rgb(209, 78, 3);
+    color: white;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition:0.3s;
+}
+.form-group button:hover {
+    background: #0056b3;
+}
+.error-message {
+    color: red;
+    margin-bottom: 10px;
+    font-size: 14px;
+    text-align: center;
+}
