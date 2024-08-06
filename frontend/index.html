@@ -46,26 +46,26 @@
             <input type="file" id="coverImage" name="coverImage">
         </div>
         <div class="form-group">
-            <button type="submit">Register</button>
+            <button type="submit" id="registerForm">Register</button>
         </div>
         <div id="error" class="error-message"></div>
     </form>
 </div>
 
 <script>
-    document.getElementById('customised_avatar').addEventListener('click', function() {
-    document.getElementById('avatar').click();
-});
-document.getElementById('avatar').addEventListener('change', function() {
-    var file = this.files[0];
-    if (file) {
-        var reader = new FileReader();
-        reader.onload = function(e) {
-            document.getElementById('display').src = e.target.result;
-        }
-        reader.readAsDataURL(file);
-    }
-});
+//     document.getElementById('customised_avatar').addEventListener('click', function() {
+//     document.getElementById('avatar').click();
+// });
+// document.getElementById('avatar').addEventListener('change', function() {
+//     var file = this.files[0];
+//     if (file) {
+//         var reader = new FileReader();
+//         reader.onload = function(e) {
+//             document.getElementById('display').src = e.target.result;
+//         }
+//         reader.readAsDataURL(file);
+//     }
+// });
     document.getElementById('registerForm').addEventListener('submit', async function(event) {
        
         event.preventDefault();
