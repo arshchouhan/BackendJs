@@ -52,6 +52,9 @@ i{
     from { opacity: 0; transform: translateY(-20px); }
     to { opacity: 1; transform: translateY(0); }
 }
+#coverImage, #avatar{
+    cursor: pointer;
+}
 .form-group {
     margin-bottom: 20px;
     display: inline;
