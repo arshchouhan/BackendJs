@@ -18,7 +18,6 @@ body {
     box-shadow:3px 3px 5px black;
     border: 0.5px solid black;
     
-    
 }
 .sign-up{
     text-align: center;
@@ -33,7 +32,6 @@ body {
 .icon-container {
     
     display: inline-block;
-    cursor:pointer;
     justify-content: center;
     align-items: center;
 }
@@ -47,9 +45,6 @@ body {
     margin-left: 140px;
 }
 
-input[type="file"] {
-    display: none;
-}
 i{
     margin-left:7px;
 }

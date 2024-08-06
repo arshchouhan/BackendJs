@@ -10,10 +10,7 @@
 <body>
 <div class="form-container">
     <div class="icon-container">
-        <label for="fileInput">
             <img src="user.jpg" alt="User Icon" class="user-icon">
-        </label>
-        <input type="file" id="fileInput" name="userImage" accept="image/*">
     </div>
     <div class="sign-up">Sign Up</div>
     <form id="registerForm" enctype="multipart/form-data">
@@ -84,7 +81,6 @@ document.getElementById('avatar').addEventListener('change', function() {
             }); 
 
             const data = await response.json();
-            console.log(data);
 
             if (!response.ok) {
                 document.getElementById('error').textContent = data.message || 'Something went wrong';
